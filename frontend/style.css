@@ -31,6 +31,8 @@ body {
   border: 1px solid rgba(71, 220, 235, 0.25);
   border-radius: 24px;
 
+  margin: auto;
+
   text-align: center;
 
   box-shadow:
@@ -173,7 +175,8 @@ button:hover {
 
   border: 1px solid #2ecc71;
 
-  box-shadow: 0 0 12px rgba(46, 204, 113, 0.15);
+  box-shadow:
+    0 0 12px rgba(46, 204, 113, 0.15);
 }
 
 /* ATENÇÃO */
@@ -183,7 +186,8 @@ button:hover {
 
   border: 1px solid #f1c40f;
 
-  box-shadow: 0 0 12px rgba(241, 196, 15, 0.12);
+  box-shadow:
+    0 0 12px rgba(241, 196, 15, 0.12);
 }
 
 /* URGENTE */
@@ -193,5 +197,26 @@ button:hover {
 
   border: 1px solid #e74c3c;
 
-  box-shadow: 0 0 12px rgba(231, 76, 60, 0.15);
+  box-shadow:
+    0 0 12px rgba(231, 76, 60, 0.15);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 15px;
+  }
 }
