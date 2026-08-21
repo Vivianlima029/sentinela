@@ -104,15 +104,21 @@
       word-break: break-word;
     }
 
-    /* Logo */
-    .logo-box { flex: 1; }
-    .logo-text {
-      color: #8c3b7a;
-      font-size: 3.5vw;
-      font-weight: bold;
-      text-transform: uppercase;
-      
-    }
+   .logo-box {
+  flex: 1;
+  padding: 10px 25px;
+  background: linear-gradient(135deg, #06152d, #0a2d55);
+  border: 2px solid #18c8f5;
+  overflow: hidden;
+}
+
+.novamed-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 12px rgba(24, 200, 245, 0.35));
+}
 
     /* Animação de flash quando chama */
     @keyframes flash {
