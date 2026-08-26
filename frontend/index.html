@@ -3,31 +3,58 @@
 <head>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="container">
-  <h2> NOVAMED🏥 </h2> 
+
+  <h2>NOVAMED🏥</h2>
+
   <input id="usuario" placeholder="Usuário">
+
   <input id="senha" type="password" placeholder="Senha">
+
   <button onclick="login()">Entrar</button>
+
 </div>
 
+
 <script>
+
 function login() {
+
   fetch("/login", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
     body: JSON.stringify({
       usuario: usuario.value,
       senha: senha.value
     })
+
   })
+
   .then(r => r.json())
+
   .then(data => {
-    if(data.tipo === "triagem") location.href = "triagem.html";
-    if(data.tipo === "medico") location.href = "medico.html";
-    if(data.tipo === "atendimento") location.href = "atendimento.html";
+
+    if(data.tipo === "triagem")
+      location.href = "triagem.html";
+
+    if(data.tipo === "medico")
+      location.href = "medico.html";
+
+    if(data.tipo === "atendimento")
+      location.href = "atendimento.html";
+
   });
+
 }
+
 </script>
+
 </body>
 </html>
