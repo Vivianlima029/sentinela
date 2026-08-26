@@ -371,7 +371,7 @@
     <div class="box logo-box">
 
       <img
-        src="img/logo2.png"
+        src="img/logo.png.png"
         alt="NOVAMED"
         class="novamed-logo"
       >
@@ -388,7 +388,6 @@
 
 let ultimoId = null;
 
-
 // Função criada para buscar a chamada atual e o histórico da TV em tempo real.
 
 function atualizar() {
@@ -403,20 +402,16 @@ function atualizar() {
 
       const historico = data.historico || [];
 
-
       if (chamada) {
 
         document.getElementById("local-tipo").innerText =
           chamada.localTipo || "GUICHÊ";
 
-
         document.getElementById("local-numero").innerText =
           chamada.localNumero || "--";
 
-
         document.getElementById("patient-name").innerText =
           chamada.paciente || "AGUARDANDO...";
-
 
         // Flash visual quando há chamada nova
 
@@ -437,9 +432,7 @@ function atualizar() {
 
       }
 
-
       // Histórico
-
       const list =
         document.getElementById("history-list");
 
@@ -473,7 +466,6 @@ function atualizar() {
     );
 
 }
-
 
 // Polling a cada 2 segundos
 
