@@ -7,6 +7,28 @@
 
 <input id="nome" placeholder="Nome">
 <input id="cpf" placeholder="CPF">
+<input id="endereco" placeholder="Endereço">
+<input id="telefone" placeholder="Telefone">
+<input id="email" type="email" placeholder="E-mail">
+<input id="contatoEmergencia" placeholder="Contato de Emergência">
+<input id="dataNascimento" type="date" placeholder="Data de Nascimento">
+
+<select id="sexo">
+  <option value="">Sexo</option>
+  <option>Masculino</option>
+  <option>Feminino</option>
+</select>
+
+<input id="nomeMae" placeholder="Nome da Mãe">
+
+<select id="estadoCivil">
+  <option value="">Estado Civil</option>
+  <option>Solteiro(a)</option>
+  <option>Casado(a)</option>
+  <option>Divorciado(a)</option>
+  <option>Viúvo(a)</option>
+</select>
+
 
 <select id="tipo">
   <option>Convenio</option>
@@ -24,9 +46,17 @@ function cadastrar(){
   method:"POST",
   headers:{"Content-Type":"application/json"},
   body: JSON.stringify({
-    nome: nome.value,
-    cpf: cpf.value,
-    tipo: tipo.value
+    nome: document.getElementById('nome').value,
+    cpf: document.getElementById('cpf').value,
+    dataNascimento:document.getElementById(' dataNascimento').value,
+    sexo:document.getElementById('sexo').value,
+    nomeMae: document.getElementById('nomeMae').value,
+    estadoCivil: document.getElementById('estadoCivil').value,
+    endereco: document.getElementById('endereco').value,
+    telefone: document.getElementById('telefone').value,
+    email:document.getElementById('email').value,
+    contatoEmergencia: document.getElementById('contatoEmergencia').value,
+    tipo: document.getElementById('tipo').value
   })
  });
  alert("Paciente enviado para triagem");
