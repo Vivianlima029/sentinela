@@ -1,1 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Alta Médica</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+
+    body {
+      background: #f4f6f9;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card-alta {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+    }
+
+    h1 {
+      color: #1f4e79;
+      margin-bottom: 5px;
+    }
+
+    .subtitulo {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .secao {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+    }
+
+    .secao h2 {
+      color: #1f4e79;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .campo-completo {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #1f4e79;
+    }
+
+    .botoes {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    button {
+      border: none;
+      padding: 11px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn-salvar {
+      background: #28a745;
+      color: white;
+    }
+
+    .btn-salvar:hover {
+      background: #218838;
+    }
+
+    .btn-pdf {
+      background: #dc3545;
+      color: white;
+    }
+
+    .btn-pdf:hover {
+      background: #bd2130;
+    }
+
+    .btn-voltar {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-voltar:hover {
+      background: #545b62;
+    }
+
+    .obrigatorio {
+      color: red;
+    }
+
+    .rodape-impressao {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .campo-completo {
+        grid-column: auto;
+      }
+
+    }
+
+    @media print {
+
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .card-alta {
+        box-shadow: none;
+        padding: 0;
+      }
+
+      .botoes,
+      .nao-imprimir {
+        display: none !important;
+      }
+
+      input,
+      select,
+      textarea {
+        border: none;
+        border-bottom: 1px solid #999;
+        border-radius: 0;
+        padding-left: 0;
+      }
+
+      .rodape-impressao {
+        display: block;
+        margin-top: 60px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card-alta">
+
+    <h1>🏥 Alta Médica</h1>
+
+    <p class="subtitulo">
+      Formulário de alta e orientações ao paciente
+    </p>
+
+
+    <!-- DADOS DO PACIENTE -->
+
+    <div class="secao">
+
+      <h2>1. Dados do Paciente</h2>
+
+      <div class="form-grid">
+
+        <div class="campo">
+          <label>
+            Nome do paciente <span class="obrigatorio">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="paciente"
+            placeholder="Nome completo"
+            required>
+        </div>
+
+
+        <div class="campo">
+          <label>Data de nascimento</label>
+
+          <input
+            type="date"
+            id="dataNascimento">
+        </div>
+
+
+        <div class="campo">
+          <label>CPF</label>
+
+          <input
+            type="text"
+            id="cpf"
+            placeholder="000.000.000-00">
+        </div>
+
+
+        <div class="campo">
+          <label>Cartão SUS</label>
+
+          <input
+            type="text"
+            id="cartaoSus"
+            placeholder="Número do cartão SUS">
+        </div>
+
+
+        <div class="campo">
+          <label>Telefone</label>
+
+          <input
+            type="text"
+            id="telefone"
+            placeholder="(00) 00000-0000">
+        </div>
+
+
+        <div class="campo">
+          <label>Data da alta <span class="obrigatorio">*</span></label>
+
+          <input
+            type="date"
+            id="dataAlta"
+            required>
+        </div>
+
+
+        <div class="campo">
+          <label>Hora da alta</label>
+
+          <input
+            type="time"
+            id="horaAlta">
+        </div>
+
+
+        <div class="campo">
+          <label>Tipo de alta</label>
+
+          <select id="tipoAlta">
+
+            <option value="">
+              Selecione
+            </option>
+
+            <option value="Alta médica">
+              Alta médica
+            </option>
+
+            <option value="Alta administrativa">
+              Alta administrativa
+            </option>
+
+            <option value="Alta a pedido">
+              Alta a pedido
+            </option>
+
+            <option value="Transferência">
+              Transferência
+            </option>
+
+            <option value="Evasão">
+              Evasão
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- DADOS CLÍNICOS -->
+
+    <div class="secao">
+
+      <h2>2. Informações Clínicas</h2>
+
+      <div class="form-grid">
+
+        <div class="campo campo-completo">
+
+          <label>Diagnóstico principal</label>
+
+          <textarea
+            id="diagnostico"
+            placeholder="Informe o diagnóstico principal">
+          </textarea>
+
+        </div>
+
+
+        <div class="campo campo-completo">
+
+          <label>Diagnósticos secundários</label>
+
+          <textarea
+            id="diagnosticosSecundarios"
+            placeholder="Outros diagnósticos, se houver">
+          </textarea>
+
+        </div>
+
+
+        <div class="campo campo-completo">
+
+          <label>Resumo do atendimento</label>
+
+          <textarea
+            id="resumoAtendimento"
+            placeholder="Descreva resumidamente o atendimento realizado, evolução do paciente e principais informações clínicas">
+          </textarea>
+
+        </div>
+
+
+        <div class="campo campo-completo">
+
+          <label>Condição do paciente no momento da alta</label>
+
+          <textarea
+            id="condicaoAlta"
+            placeholder="Descreva a condição clínica do paciente no momento da alta">
+          </textarea>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MEDICAÇÕES -->
+
+    <div class="secao">
+
+      <h2>3. Medicações e Tratamento</h2>
+
+      <div class="form-grid">
+
+        <div class="campo campo-completo">
+
+          <label>Medicações prescritas na alta</label>
+
+          <textarea
+            id="medicacoes"
+            placeholder="Nome do medicamento, dose, frequência e duração do tratamento">
+          </textarea>
+
+        </div>
+
+
+        <div class="campo campo-completo">
+
+          <label>Orientações sobre o tratamento</label>
+
+          <textarea
+            id="orientacoesTratamento"
+            placeholder="Orientações para continuidade do tratamento em casa">
+          </textarea>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ORIENTAÇÕES -->
+
+    <div class="secao">
+
+      <h2>4. Orientações ao Paciente</h2>
+
+      <div class="form-grid">
+
+        <div class="campo campo-completo">
+
+          <label>Cuidados após a alta</label>
+
+          <textarea
+            id="cuidados"
+            placeholder="Cuidados, repouso, alimentação, atividades e demais recomendações">
+          </textarea>
+
+        </div>
+
+
+        <div class="campo campo-completo">
+
+          <label>Sinais de alerta</label>
+
+          <textarea
+            id="sinaisAlerta"
+            placeholder="Informe os sinais e sintomas que devem motivar retorno ao serviço de saúde">
+          </textarea>
+
+        </div>
+
+
+        <div class="campo campo-completo">
+
+          <label>Retorno / acompanhamento</label>
+
+          <textarea
+            id="retorno"
+            placeholder="Data, local ou especialidade para acompanhamento">
+          </textarea>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ENCAMINHAMENTO -->
+
+    <div class="secao">
+
+      <h2>5. Encaminhamento</h2>
+
+      <div class="form-grid">
+
+        <div class="campo">
+
+          <label>Necessita encaminhamento?</label>
+
+          <select id="encaminhamento">
+
+            <option value="Não">
+              Não
+            </option>
+
+            <option value="Sim">
+              Sim
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="campo">
+
+          <label>Especialidade</label>
+
+          <input
+            type="text"
+            id="especialidade"
+            placeholder="Ex.: Cardiologia">
+        </div>
+
+
+        <div class="campo campo-completo">
+
+          <label>Observações finais</label>
+
+          <textarea
+            id="observacoes"
+            placeholder="Observações adicionais">
+          </textarea>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PROFISSIONAL -->
+
+    <div class="secao">
+
+      <h2>6. Profissional Responsável</h2>
+
+      <div class="form-grid">
+
+        <div class="campo">
+
+          <label>Nome do profissional</label>
+
+          <input
+            type="text"
+            id="profissional"
+            placeholder="Nome do médico/profissional">
+
+        </div>
+
+
+        <div class="campo">
+
+          <label>CRM</label>
+
+          <input
+            type="text"
+            id="crm"
+            placeholder="Número do CRM">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- BOTÕES -->
+
+    <div class="botoes">
+
+      <button
+        class="btn-salvar"
+        onclick="salvarAlta()">
+        💾 Salvar Alta
+      </button>
+
+
+      <button
+        class="btn-pdf"
+        onclick="window.print()">
+        📄 Baixar / Imprimir PDF
+      </button>
+
+
+      <button
+        class="btn-voltar"
+        onclick="window.location.href='index.html'">
+        ↩️ Voltar
+      </button>
+
+    </div>
+
+
+    <!-- ÁREA QUE APARECE NA IMPRESSÃO -->
+
+    <div class="rodape-impressao">
+
+      <hr>
+
+      <p>
+        <strong>Assinatura do profissional:</strong>
+      </p>
+
+      <br><br>
+
+      _______________________________________________
+
+      <p>
+        Nome: <span id="assinaturaNome"></span>
+      </p>
+
+      <p>
+        CRM: <span id="assinaturaCRM"></span>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/*
+ * Define automaticamente a data atual
+ */
+document.getElementById("dataAlta").value =
+  new Date().toISOString().split("T")[0];
+
+
+/*
+ * Define automaticamente a hora atual
+ */
+const agora = new Date();
+
+document.getElementById("horaAlta").value =
+  agora.toTimeString().substring(0, 5);
+
+
+/*
+ * Função para obter o valor de um campo
+ */
+function valor(id) {
+
+  return document.getElementById(id).value.trim();
+
+}
+
+
+/*
+ * Salvar alta no backend
+ */
+function salvarAlta() {
+
+  const paciente =
+    valor("paciente");
+
+  if (!paciente) {
+
+    alert(
+      "⚠️ Informe o nome do paciente."
+    );
+
+    return;
+
+  }
+
+
+  const dadosAlta = {
+
+    paciente: paciente,
+
+    dataNascimento:
+      valor("dataNascimento"),
+
+    cpf:
+      valor("cpf"),
+
+    cartaoSus:
+      valor("cartaoSus"),
+
+    telefone:
+      valor("telefone"),
+
+    dataAlta:
+      valor("dataAlta"),
+
+    horaAlta:
+      valor("horaAlta"),
+
+    tipoAlta:
+      valor("tipoAlta"),
+
+    diagnostico:
+      valor("diagnostico"),
+
+    diagnosticosSecundarios:
+      valor("diagnosticosSecundarios"),
+
+    resumoAtendimento:
+      valor("resumoAtendimento"),
+
+    condicaoAlta:
+      valor("condicaoAlta"),
+
+    medicacoes:
+      valor("medicacoes"),
+
+    orientacoesTratamento:
+      valor("orientacoesTratamento"),
+
+    cuidados:
+      valor("cuidados"),
+
+    sinaisAlerta:
+      valor("sinaisAlerta"),
+
+    retorno:
+      valor("retorno"),
+
+    encaminhamento:
+      valor("encaminhamento"),
+
+    especialidade:
+      valor("especialidade"),
+
+    observacoes:
+      valor("observacoes"),
+
+    profissional:
+      valor("profissional"),
+
+    crm:
+      valor("crm"),
+
+    dataRegistro:
+      new Date().toISOString()
+
+  };
+
+
+  fetch("/alta", {
+
+    method: "POST",
+
+    headers: {
+
+      "Content-Type":
+        "application/json"
+
+    },
+
+    body:
+      JSON.stringify(dadosAlta)
+
+  })
+
+  .then(response => {
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Erro ao salvar alta."
+      );
+
+    }
+
+    return response.json();
+
+  })
+
+  .then(data => {
+
+    alert(
+      "✅ Alta médica salva com sucesso!"
+    );
+
+    /*
+     * Atualiza os dados que aparecem
+     * na versão impressa.
+     */
+    document.getElementById(
+      "assinaturaNome"
+    ).textContent =
+      valor("profissional");
+
+    document.getElementById(
+      "assinaturaCRM"
+    ).textContent =
+      valor("crm");
+
+  })
+
+  .catch(error => {
+
+    console.error(error);
+
+    alert(
+      "❌ Não foi possível salvar a alta. Verifique se o servidor está funcionando."
+    );
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>
 
