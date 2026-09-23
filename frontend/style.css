@@ -1,144 +1,208 @@
+/* =====================================================
+   NOVAMED - PAINEL MÉDICO
+   Interface moderna / Glassmorphism Hospitalar
+===================================================== */
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #06151d;
+  --bg-secondary: #0a202a;
+
+  --card: rgba(11, 35, 47, 0.78);
+  --card-light: rgba(17, 48, 61, 0.82);
+
+  --cyan: #54e7f5;
+  --cyan-dark: #0b9db5;
+
+  --text: #ecfdff;
+  --text-secondary: #8eb8c1;
+
+  --border: rgba(84, 231, 245, 0.18);
+
+  --success: #4dff9a;
+  --warning: #ffe66d;
+  --danger: #ff7165;
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  color: var(--text);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 40px 20px;
 
   background:
-    radial-gradient(circle at top left, #153b52, transparent 40%),
-    radial-gradient(circle at bottom right, #0b7285, transparent 35%),
-    #071923;
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(12, 126, 151, 0.28),
+      transparent 30%
+    ),
 
-  color: #eafcff;
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(13, 91, 111, 0.25),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      135deg,
+      #041117,
+      #071c25,
+      #05141b
+    );
+
+  overflow-x: hidden;
 }
 
-/* =========================================
-   CONTAINER PRINCIPAL
-========================================= */
+
+/* =====================================================
+   EFEITO DE LUZ AO FUNDO
+===================================================== */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  width: 450px;
+  height: 450px;
+
+  top: -180px;
+  right: -150px;
+
+  background: rgba(84, 231, 245, 0.06);
+
+  filter: blur(100px);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   CONTAINERS
+===================================================== */
 
 .container {
-  width: 92%;
-  max-width: 1000px;
+  width: min(1100px, 95%);
 
-  margin: 30px auto;
+  margin: 0 auto 24px;
 
-  padding: 30px;
+  padding: 32px;
 
-  background: rgba(9, 30, 41, 0.94);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(13, 42, 55, 0.92),
+      rgba(5, 23, 31, 0.94)
+    );
 
-  border: 1px solid rgba(71, 220, 235, 0.25);
+  border: 1px solid var(--border);
 
-  border-radius: 24px;
+  border-radius: 28px;
 
   box-shadow:
-    0 0 40px rgba(0, 220, 255, 0.08),
-    inset 0 0 30px rgba(0, 220, 255, 0.03);
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(25px);
 }
 
-/* =========================================
-   CABEÇALHO
-========================================= */
 
-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-header h1 {
-  margin: 0 0 10px;
-
-  color: #55e6f5;
-
-  font-size: 30px;
-
-  letter-spacing: 2px;
-
-  text-shadow:
-    0 0 15px rgba(85, 230, 245, 0.4);
-}
-
-header p {
-  margin: 0;
-
-  color: #8eb5bf;
-
-  font-size: 14px;
-}
-
-/* =========================================
-   TÍTULOS
-========================================= */
-
-h1,
-h2,
-h3 {
-  color: #b8f8ff;
-}
-
-h2 {
-  margin: 0;
-
-  color: #55e6f5;
-
-  font-size: 25px;
-
-  letter-spacing: 1px;
-}
-
-h3 {
-  color: #55e6f5;
-
-  margin-top: 25px;
-}
-
-/* =========================================
-   CABEÇALHO DO PAINEL MÉDICO
-========================================= */
+/* =====================================================
+   CABEÇALHO DO PAINEL
+===================================================== */
 
 .painel-header {
   display: flex;
 
-  justify-content: space-between;
-
   align-items: center;
+
+  justify-content: space-between;
 
   gap: 20px;
 
-  margin-bottom: 25px;
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid rgba(84, 231, 245, 0.1);
 }
 
-/* =========================================
-   BOTÃO ABRIR TV
-========================================= */
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.painel-header h2 {
+  font-size: 27px;
+
+  color: white;
+
+  letter-spacing: -0.5px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.painel-header h2::after {
+  content: "ONLINE";
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  color: var(--success);
+
+  background: rgba(77, 255, 154, 0.08);
+
+  border: 1px solid rgba(77, 255, 154, 0.25);
+}
+
+
+/* =====================================================
+   BOTÃO TV
+===================================================== */
 
 .btn-abrir-tv {
   width: auto;
 
-  padding: 11px 18px;
-
   margin: 0;
 
-  border: 1px solid #2ec4d6;
+  padding: 11px 18px;
 
-  border-radius: 10px;
+  border-radius: 12px;
 
-  background: linear-gradient(
-    135deg,
-    #087f96,
-    #17a2b8
-  );
+  border: 1px solid rgba(84, 231, 245, 0.25);
 
-  color: white;
+  background: rgba(84, 231, 245, 0.08);
 
-  font-size: 14px;
+  color: var(--cyan);
 
-  font-weight: bold;
+  font-size: 13px;
+
+  font-weight: 600;
 
   cursor: pointer;
 
@@ -146,516 +210,545 @@ h3 {
 }
 
 .btn-abrir-tv:hover {
-  background: linear-gradient(
-    135deg,
-    #096b7e,
-    #117a8b
-  );
+  background: rgba(84, 231, 245, 0.16);
 
   transform: translateY(-2px);
 
   box-shadow:
-    0 0 18px rgba(23, 162, 184, 0.35);
+    0 10px 25px rgba(84, 231, 245, 0.12);
 }
 
-/* =========================================
-   CAMPO CONSULTÓRIO
-========================================= */
+
+/* =====================================================
+   CONSULTÓRIO
+===================================================== */
 
 .consultorio-input {
+  margin: 28px auto;
+
+  padding: 20px 24px;
+
+  max-width: 700px;
+
   display: flex;
 
   align-items: center;
 
-  gap: 15px;
+  justify-content: center;
 
-  margin-bottom: 20px;
+  gap: 14px;
 
-  padding: 15px 18px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(84, 231, 245, 0.08),
+      rgba(84, 231, 245, 0.02)
+    );
 
-  background: rgba(13, 38, 51, 0.85);
+  border: 1px solid rgba(84, 231, 245, 0.16);
 
-  border: 1px solid #24505d;
-
-  border-radius: 14px;
+  border-radius: 18px;
 }
 
 .consultorio-input label {
-  color: #b8f8ff;
+  color: var(--text);
 
-  font-weight: bold;
+  font-weight: 600;
 
-  white-space: nowrap;
+  font-size: 14px;
 }
 
 .consultorio-input input {
-  width: 75px;
+  width: 70px;
 
   margin: 0;
 
-  padding: 9px;
+  padding: 10px;
 
   text-align: center;
 
   font-size: 18px;
 
   font-weight: bold;
+
+  color: var(--cyan);
+
+  background: rgba(0, 0, 0, 0.2);
+
+  border: 1px solid rgba(84, 231, 245, 0.25);
+
+  border-radius: 10px;
 }
 
 .consultorio-input span {
-  color: #7597a0;
+  color: var(--text-secondary);
 
-  font-size: 13px;
+  font-size: 12px;
 }
 
-/* =========================================
+
+/* =====================================================
    LINHA
-========================================= */
+===================================================== */
 
 hr {
   border: none;
 
   height: 1px;
 
-  margin: 25px 0;
+  margin: 30px 0;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      #24505d,
+      rgba(84, 231, 245, 0.2),
       transparent
     );
 }
 
-/* =========================================
-   FORMULÁRIO
-========================================= */
+
+/* =====================================================
+   FORMULÁRIO DA CONSULTA
+===================================================== */
 
 .form-consulta {
-  background: rgba(11, 34, 45, 0.7);
+  width: min(700px, 100%);
 
-  border: 1px solid #193f4b;
+  margin: 0 auto;
 
-  border-radius: 18px;
+  padding: 28px;
 
-  padding: 22px;
+  background:
+    rgba(5, 24, 32, 0.75);
 
-  margin-bottom: 30px;
+  border: 1px solid rgba(84, 231, 245, 0.12);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.2);
 }
 
 .form-consulta h3 {
-  margin-top: 0;
+  text-align: center;
 
-  text-align: left;
+  font-size: 19px;
+
+  margin-bottom: 20px;
+
+  color: var(--cyan);
 }
 
-/* =========================================
+
+/* =====================================================
    CAMPOS
-========================================= */
+===================================================== */
 
 input,
 select,
 textarea,
 button {
-  width: 100%;
-
-  padding: 13px;
-
-  margin-top: 10px;
-
-  border-radius: 12px;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 16px;
-
-  outline: none;
+  font-family: inherit;
 }
 
 input,
 select,
 textarea {
-  background: #0d2633;
+  width: 100%;
 
-  color: #eaffff;
+  margin-top: 12px;
 
-  border: 1px solid #24505d;
+  padding: 14px 16px;
+
+  color: var(--text);
+
+  background: rgba(6, 27, 36, 0.9);
+
+  border: 1px solid rgba(84, 231, 245, 0.14);
+
+  border-radius: 12px;
+
+  outline: none;
+
+  font-size: 14px;
 
   transition: 0.25s;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #7597a0;
+  color: #648993;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: #55e6f5;
+  border-color: var(--cyan);
+
+  background: rgba(7, 32, 42, 0.95);
 
   box-shadow:
-    0 0 0 2px rgba(85, 230, 245, 0.08),
-    0 0 15px rgba(85, 230, 245, 0.12);
+    0 0 0 3px rgba(84, 231, 245, 0.06);
 }
 
 textarea {
-  min-height: 100px;
+  min-height: 110px;
 
   resize: vertical;
 }
 
-/* Campo paciente selecionado */
-
 #paciente {
-  background: #102f3d;
-
-  border-color: #2d6977;
-
-  color: #55e6f5;
+  color: var(--cyan);
 
   font-weight: bold;
+
+  background:
+    rgba(84, 231, 245, 0.05);
 }
 
-/* =========================================
-   BOTÃO PADRÃO
-========================================= */
 
-button {
+/* =====================================================
+   BOTÃO SALVAR
+===================================================== */
+
+.btn-salvar {
+  margin-top: 18px;
+
+  padding: 14px;
+
   border: none;
 
-  background: linear-gradient(
-    90deg,
-    #08a6bd,
-    #55e6f5
-  );
+  border-radius: 12px;
 
-  color: #06202a;
+  background:
+    linear-gradient(
+      135deg,
+      #0aa1ba,
+      #54e7f5
+    );
 
-  font-weight: bold;
+  color: #04202a;
+
+  font-size: 14px;
+
+  font-weight: 800;
 
   cursor: pointer;
 
   transition: 0.25s;
 }
 
-button:hover {
+.btn-salvar:hover {
   transform: translateY(-2px);
 
   box-shadow:
-    0 0 20px rgba(85, 230, 245, 0.35);
+    0 12px 30px rgba(84, 231, 245, 0.18);
 }
 
-/* =========================================
-   BOTÃO SALVAR
-========================================= */
 
-.btn-salvar {
-  margin-top: 15px;
+/* =====================================================
+   SEGUNDO CONTAINER / INFORMAÇÕES
+===================================================== */
 
-  background: linear-gradient(
-    90deg,
-    #08a6bd,
-    #55e6f5
-  );
+header {
+  text-align: center;
 }
 
-/* =========================================
-   BOTÃO TV
-========================================= */
-
-.btn-tv {
-  width: auto;
-
-  margin-top: 8px;
-
-  padding: 9px 15px;
-
-  border-radius: 9px;
-
-  background: linear-gradient(
-    135deg,
-    #087f96,
-    #17a2b8
-  );
-
+header h1 {
   color: white;
 
-  font-size: 14px;
+  font-size: 20px;
 
-  font-weight: bold;
-
-  border: 1px solid rgba(85, 230, 245, 0.3);
+  margin-bottom: 8px;
 }
 
-.btn-tv:hover {
-  background: linear-gradient(
-    135deg,
-    #096b7e,
-    #117a8b
-  );
-
-  box-shadow:
-    0 0 15px rgba(23, 162, 184, 0.3);
-}
-
-/* =========================================
-   BOTÃO ALTA
-========================================= */
-
-.btn-alta {
-  width: auto;
-
-  margin-top: 8px;
-
-  padding: 9px 15px;
-
-  border-radius: 9px;
-
-  background: linear-gradient(
-    135deg,
-    #8f2631,
-    #dc3545
-  );
-
-  color: white;
-
-  font-size: 14px;
-
-  font-weight: bold;
-
-  border: 1px solid rgba(255, 113, 101, 0.3);
-}
-
-.btn-alta:hover {
-  background: linear-gradient(
-    135deg,
-    #76202a,
-    #bd2130
-  );
-
-  box-shadow:
-    0 0 15px rgba(220, 53, 69, 0.25);
-}
-
-/* =========================================
-   ÁREA DA FILA DE PACIENTES
-========================================= */
-
-#triagens {
-  width: 92%;
-  max-width: 1000px;
-
-  margin: 0 auto 40px;
-}
-
-/* =========================================
-   CARD DO PACIENTE
-========================================= */
-
-.card {
-  margin: 18px 0;
-
-  padding: 22px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(11, 34, 45, 0.98),
-      rgba(8, 27, 37, 0.98)
-    );
-
-  border: 1px solid #193f4b;
-
-  border-radius: 18px;
-
-  text-align: left;
-
-  transition: 0.25s;
-
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.18);
-}
-
-.card:hover {
-  border-color: #55e6f5;
-
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.28),
-    0 0 15px rgba(85, 230, 245, 0.08);
-}
-
-.card h3 {
-  margin-top: 0;
-
-  margin-bottom: 15px;
-
-  color: #55e6f5;
-
-  font-size: 21px;
-}
-
-.card p {
-  margin: 9px 0;
-
-  color: #b8dce2;
-
-  line-height: 1.5;
-}
-
-.card b {
-  color: #eaffff;
-}
-
-/* =========================================
-   ÁREA DOS BOTÕES DO CARD
-========================================= */
-
-.card-acoes {
-  display: flex;
-
-  gap: 8px;
-
-  flex-wrap: wrap;
-
-  margin-top: 18px;
-
-  padding-top: 15px;
-
-  border-top: 1px solid #193f4b;
-}
-
-.card-acoes button {
-  width: auto;
-
-  margin-top: 0;
-}
-
-/* =========================================
-   STATUS
-========================================= */
-
-.verde,
-.amarelo,
-.vermelho {
-  display: inline-block;
-
-  padding: 7px 16px;
-
-  border-radius: 30px;
-
-  font-weight: bold;
+header p {
+  color: var(--text-secondary);
 
   font-size: 13px;
 }
 
-/* DISPONÍVEL */
 
-.verde {
-  background: rgba(46, 204, 113, 0.15);
-
-  color: #4dff9a;
-
-  border: 1px solid #2ecc71;
-
-  box-shadow:
-    0 0 12px rgba(46, 204, 113, 0.15);
-}
-
-/* ATENÇÃO */
-
-.amarelo {
-  background: rgba(241, 196, 15, 0.15);
-
-  color: #ffe66d;
-
-  border: 1px solid #f1c40f;
-
-  box-shadow:
-    0 0 12px rgba(241, 196, 15, 0.12);
-}
-
-/* URGENTE */
-
-.vermelho {
-  background: rgba(231, 76, 60, 0.15);
-
-  color: #ff7165;
-
-  border: 1px solid #e74c3c;
-
-  box-shadow:
-    0 0 12px rgba(231, 76, 60, 0.15);
-}
-
-/* =========================================
-   MENSAGEM DE FILA VAZIA
-========================================= */
-
-.fila-vazia {
-  padding: 35px;
-
-  text-align: center;
-
-  color: #7597a0;
-
-  background: rgba(11, 34, 45, 0.7);
-
-  border: 1px dashed #24505d;
-
-  border-radius: 16px;
-}
-
-/* =========================================
-   BOTÃO DE PDF
-========================================= */
+/* =====================================================
+   BOTÃO PDF
+===================================================== */
 
 .btn-pdf {
   width: auto;
 
   margin-top: 18px;
 
-  padding: 10px 20px;
+  padding: 9px 18px;
 
-  background: #243943;
+  border-radius: 10px;
 
-  color: #b8f8ff;
+  border: 1px solid rgba(84, 231, 245, 0.15);
 
-  border: 1px solid #24505d;
+  background: rgba(84, 231, 245, 0.06);
+
+  color: var(--cyan);
+
+  cursor: pointer;
 }
 
 .btn-pdf:hover {
-  background: #2d4a56;
-
-  box-shadow:
-    0 0 15px rgba(85, 230, 245, 0.12);
+  background: rgba(84, 231, 245, 0.12);
 }
 
-/* =========================================
+
+/* =====================================================
+   ÁREA DOS PACIENTES
+===================================================== */
+
+#triagens {
+  width: min(1000px, 95%);
+
+  margin: 0 auto 40px;
+}
+
+
+/* =====================================================
+   CARD DO PACIENTE
+===================================================== */
+
+.card {
+  position: relative;
+
+  margin: 18px auto;
+
+  padding: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(13, 42, 55, 0.9),
+      rgba(7, 27, 36, 0.9)
+    );
+
+  border: 1px solid rgba(84, 231, 245, 0.12);
+
+  border-radius: 20px;
+
+  transition: 0.25s;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(84, 231, 245, 0.3);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+.card h3 {
+  color: white;
+
+  font-size: 18px;
+
+  margin-bottom: 18px;
+}
+
+.card p {
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+  margin: 9px 0;
+}
+
+.card p b {
+  color: #dffaff;
+}
+
+
+/* =====================================================
+   BOTÕES DOS CARDS
+===================================================== */
+
+.card-acoes {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-top: 20px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(84, 231, 245, 0.08);
+}
+
+.card-acoes button {
+  width: auto;
+
+  margin: 0;
+
+  padding: 10px 15px;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+
+/* ATENDER */
+
+.card-acoes button:not(.btn-tv):not(.btn-alta) {
+  background: rgba(84, 231, 245, 0.1);
+
+  color: var(--cyan);
+
+  border: 1px solid rgba(84, 231, 245, 0.2);
+}
+
+
+/* TV */
+
+.btn-tv {
+  background: rgba(23, 162, 184, 0.1);
+
+  color: #5de5f5;
+
+  border: 1px solid rgba(23, 162, 184, 0.25);
+}
+
+
+/* ALTA */
+
+.btn-alta {
+  background: rgba(220, 53, 69, 0.08);
+
+  color: #ff7b82;
+
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.card-acoes button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   CLASSIFICAÇÃO DE RISCO
+===================================================== */
+
+.verde,
+.amarelo,
+.vermelho {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 11px;
+
+  border-radius: 30px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* VERDE */
+
+.verde {
+  color: var(--success);
+
+  background: rgba(77, 255, 154, 0.07);
+
+  border: 1px solid rgba(77, 255, 154, 0.25);
+}
+
+
+/* AMARELO */
+
+.amarelo {
+  color: var(--warning);
+
+  background: rgba(255, 230, 109, 0.07);
+
+  border: 1px solid rgba(255, 230, 109, 0.25);
+}
+
+
+/* VERMELHO */
+
+.vermelho {
+  color: var(--danger);
+
+  background: rgba(255, 113, 101, 0.07);
+
+  border: 1px solid rgba(255, 113, 101, 0.25);
+}
+
+
+/* =====================================================
+   FILA VAZIA
+===================================================== */
+
+.fila-vazia {
+  width: min(700px, 100%);
+
+  margin: 30px auto;
+
+  padding: 45px 25px;
+
+  text-align: center;
+
+  color: var(--text-secondary);
+
+  background: rgba(11, 35, 47, 0.65);
+
+  border: 1px dashed rgba(84, 231, 245, 0.2);
+
+  border-radius: 20px;
+}
+
+
+/* =====================================================
    RESPONSIVIDADE
-========================================= */
+===================================================== */
 
 @media (max-width: 700px) {
 
+  body {
+    padding: 20px 10px;
+  }
+
   .container {
-    width: 94%;
+    width: 100%;
 
-    padding: 20px;
+    padding: 22px;
 
-    margin: 15px auto;
-
-    border-radius: 18px;
+    border-radius: 20px;
   }
 
   .painel-header {
     flex-direction: column;
 
-    align-items: stretch;
-
     text-align: center;
+  }
+
+  .painel-header h2 {
+    justify-content: center;
   }
 
   .btn-abrir-tv {
@@ -665,17 +758,15 @@ button:hover {
   .consultorio-input {
     flex-direction: column;
 
-    align-items: stretch;
-
     text-align: center;
   }
 
   .consultorio-input input {
-    width: 100%;
+    width: 90px;
   }
 
-  .card {
-    padding: 18px;
+  .form-consulta {
+    padding: 20px;
   }
 
   .card-acoes {
@@ -685,69 +776,46 @@ button:hover {
   .card-acoes button {
     width: 100%;
   }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  input,
-  select,
-  textarea,
-  button {
-    font-size: 15px;
-  }
 }
 
-/* =========================================
-   IMPRESSÃO / PDF
-========================================= */
+
+/* =====================================================
+   IMPRESSÃO
+===================================================== */
 
 @media print {
 
   body {
     background: white;
 
-    color: #000;
-  }
-
-  .container,
-  .card {
-    background: white;
-
-    color: #000;
-
-    box-shadow: none;
-
-    border: 1px solid #ccc;
+    color: black;
   }
 
   .btn-abrir-tv,
   .btn-tv,
   .btn-alta,
   .btn-pdf,
-  button {
+  .btn-salvar {
     display: none;
+  }
+
+  .container,
+  .card,
+  .form-consulta {
+    background: white;
+
+    color: black;
+
+    box-shadow: none;
+
+    border: 1px solid #ccc;
   }
 
   h1,
   h2,
-  h3 {
-    color: #000;
-
-    text-shadow: none;
-  }
-
-  input,
-  select,
-  textarea {
-    color: #000;
-
-    background: white;
-
-    border: 1px solid #ccc;
+  h3,
+  p,
+  label {
+    color: black !important;
   }
 }
