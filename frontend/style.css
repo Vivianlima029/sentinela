@@ -6,11 +6,7 @@ body {
   margin: 0;
   min-height: 100vh;
 
-  font-family: Arial, sans-serif;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 
   background:
     radial-gradient(circle at top left, #153b52, transparent 40%),
@@ -20,20 +16,23 @@ body {
   color: #eafcff;
 }
 
-/* PAINEL PRINCIPAL */
+/* =========================================
+   CONTAINER PRINCIPAL
+========================================= */
+
 .container {
-  width: 90%;
-  max-width: 850px;
+  width: 92%;
+  max-width: 1000px;
+
+  margin: 30px auto;
+
   padding: 30px;
 
-  background: rgba(9, 30, 41, 0.92);
+  background: rgba(9, 30, 41, 0.94);
 
   border: 1px solid rgba(71, 220, 235, 0.25);
+
   border-radius: 24px;
-
-  margin: auto;
-
-  text-align: center;
 
   box-shadow:
     0 0 40px rgba(0, 220, 255, 0.08),
@@ -42,34 +41,234 @@ body {
   backdrop-filter: blur(12px);
 }
 
-/* TÍTULOS */
-h1 {
-  color: #55e6f5;
-  letter-spacing: 2px;
-  margin-bottom: 25px;
+/* =========================================
+   CABEÇALHO
+========================================= */
 
-  text-shadow: 0 0 15px rgba(85, 230, 245, 0.4);
+header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
+header h1 {
+  margin: 0 0 10px;
+
+  color: #55e6f5;
+
+  font-size: 30px;
+
+  letter-spacing: 2px;
+
+  text-shadow:
+    0 0 15px rgba(85, 230, 245, 0.4);
+}
+
+header p {
+  margin: 0;
+
+  color: #8eb5bf;
+
+  font-size: 14px;
+}
+
+/* =========================================
+   TÍTULOS
+========================================= */
+
+h1,
 h2,
 h3 {
   color: #b8f8ff;
 }
 
-/* CAMPOS */
+h2 {
+  margin: 0;
+
+  color: #55e6f5;
+
+  font-size: 25px;
+
+  letter-spacing: 1px;
+}
+
+h3 {
+  color: #55e6f5;
+
+  margin-top: 25px;
+}
+
+/* =========================================
+   CABEÇALHO DO PAINEL MÉDICO
+========================================= */
+
+.painel-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+/* =========================================
+   BOTÃO ABRIR TV
+========================================= */
+
+.btn-abrir-tv {
+  width: auto;
+
+  padding: 11px 18px;
+
+  margin: 0;
+
+  border: 1px solid #2ec4d6;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    #087f96,
+    #17a2b8
+  );
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.btn-abrir-tv:hover {
+  background: linear-gradient(
+    135deg,
+    #096b7e,
+    #117a8b
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 18px rgba(23, 162, 184, 0.35);
+}
+
+/* =========================================
+   CAMPO CONSULTÓRIO
+========================================= */
+
+.consultorio-input {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+
+  padding: 15px 18px;
+
+  background: rgba(13, 38, 51, 0.85);
+
+  border: 1px solid #24505d;
+
+  border-radius: 14px;
+}
+
+.consultorio-input label {
+  color: #b8f8ff;
+
+  font-weight: bold;
+
+  white-space: nowrap;
+}
+
+.consultorio-input input {
+  width: 75px;
+
+  margin: 0;
+
+  padding: 9px;
+
+  text-align: center;
+
+  font-size: 18px;
+
+  font-weight: bold;
+}
+
+.consultorio-input span {
+  color: #7597a0;
+
+  font-size: 13px;
+}
+
+/* =========================================
+   LINHA
+========================================= */
+
+hr {
+  border: none;
+
+  height: 1px;
+
+  margin: 25px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #24505d,
+      transparent
+    );
+}
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
+.form-consulta {
+  background: rgba(11, 34, 45, 0.7);
+
+  border: 1px solid #193f4b;
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  margin-bottom: 30px;
+}
+
+.form-consulta h3 {
+  margin-top: 0;
+
+  text-align: left;
+}
+
+/* =========================================
+   CAMPOS
+========================================= */
+
 input,
 select,
 textarea,
 button {
   width: 100%;
+
   padding: 13px;
 
   margin-top: 10px;
 
   border-radius: 12px;
 
+  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 16px;
-  text-align: center;
 
   outline: none;
 }
@@ -78,6 +277,7 @@ input,
 select,
 textarea {
   background: #0d2633;
+
   color: #eaffff;
 
   border: 1px solid #24505d;
@@ -102,10 +302,26 @@ textarea:focus {
 
 textarea {
   min-height: 100px;
-  resize: none;
+
+  resize: vertical;
 }
 
-/* BOTÃO */
+/* Campo paciente selecionado */
+
+#paciente {
+  background: #102f3d;
+
+  border-color: #2d6977;
+
+  color: #55e6f5;
+
+  font-weight: bold;
+}
+
+/* =========================================
+   BOTÃO PADRÃO
+========================================= */
+
 button {
   border: none;
 
@@ -118,43 +334,210 @@ button {
   color: #06202a;
 
   font-weight: bold;
+
   cursor: pointer;
 
   transition: 0.25s;
 }
 
 button:hover {
-  transform: scale(1.02);
+  transform: translateY(-2px);
 
   box-shadow:
     0 0 20px rgba(85, 230, 245, 0.35);
 }
 
-/* CARDS */
+/* =========================================
+   BOTÃO SALVAR
+========================================= */
+
+.btn-salvar {
+  margin-top: 15px;
+
+  background: linear-gradient(
+    90deg,
+    #08a6bd,
+    #55e6f5
+  );
+}
+
+/* =========================================
+   BOTÃO TV
+========================================= */
+
+.btn-tv {
+  width: auto;
+
+  margin-top: 8px;
+
+  padding: 9px 15px;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    #087f96,
+    #17a2b8
+  );
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  border: 1px solid rgba(85, 230, 245, 0.3);
+}
+
+.btn-tv:hover {
+  background: linear-gradient(
+    135deg,
+    #096b7e,
+    #117a8b
+  );
+
+  box-shadow:
+    0 0 15px rgba(23, 162, 184, 0.3);
+}
+
+/* =========================================
+   BOTÃO ALTA
+========================================= */
+
+.btn-alta {
+  width: auto;
+
+  margin-top: 8px;
+
+  padding: 9px 15px;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    #8f2631,
+    #dc3545
+  );
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  border: 1px solid rgba(255, 113, 101, 0.3);
+}
+
+.btn-alta:hover {
+  background: linear-gradient(
+    135deg,
+    #76202a,
+    #bd2130
+  );
+
+  box-shadow:
+    0 0 15px rgba(220, 53, 69, 0.25);
+}
+
+/* =========================================
+   ÁREA DA FILA DE PACIENTES
+========================================= */
+
+#triagens {
+  width: 92%;
+  max-width: 1000px;
+
+  margin: 0 auto 40px;
+}
+
+/* =========================================
+   CARD DO PACIENTE
+========================================= */
+
 .card {
-  margin: 16px 0;
-  padding: 20px;
- 
-  background: #0b222d;
+  margin: 18px 0;
+
+  padding: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(11, 34, 45, 0.98),
+      rgba(8, 27, 37, 0.98)
+    );
 
   border: 1px solid #193f4b;
-  border-radius: 16px;
 
-  text-align: center;
+  border-radius: 18px;
+
+  text-align: left;
 
   transition: 0.25s;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
 .card:hover {
   border-color: #55e6f5;
 
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 
   box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.25);
+    0 10px 30px rgba(0, 0, 0, 0.28),
+    0 0 15px rgba(85, 230, 245, 0.08);
 }
 
-/* STATUS */
+.card h3 {
+  margin-top: 0;
+
+  margin-bottom: 15px;
+
+  color: #55e6f5;
+
+  font-size: 21px;
+}
+
+.card p {
+  margin: 9px 0;
+
+  color: #b8dce2;
+
+  line-height: 1.5;
+}
+
+.card b {
+  color: #eaffff;
+}
+
+/* =========================================
+   ÁREA DOS BOTÕES DO CARD
+========================================= */
+
+.card-acoes {
+  display: flex;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+  margin-top: 18px;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #193f4b;
+}
+
+.card-acoes button {
+  width: auto;
+
+  margin-top: 0;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
 .verde,
 .amarelo,
 .vermelho {
@@ -165,12 +548,15 @@ button:hover {
   border-radius: 30px;
 
   font-weight: bold;
-  font-size: 14px;
+
+  font-size: 13px;
 }
 
 /* DISPONÍVEL */
+
 .verde {
   background: rgba(46, 204, 113, 0.15);
+
   color: #4dff9a;
 
   border: 1px solid #2ecc71;
@@ -180,8 +566,10 @@ button:hover {
 }
 
 /* ATENÇÃO */
+
 .amarelo {
   background: rgba(241, 196, 15, 0.15);
+
   color: #ffe66d;
 
   border: 1px solid #f1c40f;
@@ -191,8 +579,10 @@ button:hover {
 }
 
 /* URGENTE */
+
 .vermelho {
   background: rgba(231, 76, 60, 0.15);
+
   color: #ff7165;
 
   border: 1px solid #e74c3c;
@@ -201,16 +591,107 @@ button:hover {
     0 0 12px rgba(231, 76, 60, 0.15);
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 600px) {
+/* =========================================
+   MENSAGEM DE FILA VAZIA
+========================================= */
+
+.fila-vazia {
+  padding: 35px;
+
+  text-align: center;
+
+  color: #7597a0;
+
+  background: rgba(11, 34, 45, 0.7);
+
+  border: 1px dashed #24505d;
+
+  border-radius: 16px;
+}
+
+/* =========================================
+   BOTÃO DE PDF
+========================================= */
+
+.btn-pdf {
+  width: auto;
+
+  margin-top: 18px;
+
+  padding: 10px 20px;
+
+  background: #243943;
+
+  color: #b8f8ff;
+
+  border: 1px solid #24505d;
+}
+
+.btn-pdf:hover {
+  background: #2d4a56;
+
+  box-shadow:
+    0 0 15px rgba(85, 230, 245, 0.12);
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 700px) {
+
   .container {
-    width: 95%;
+    width: 94%;
+
     padding: 20px;
+
+    margin: 15px auto;
+
     border-radius: 18px;
+  }
+
+  .painel-header {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    text-align: center;
+  }
+
+  .btn-abrir-tv {
+    width: 100%;
+  }
+
+  .consultorio-input {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    text-align: center;
+  }
+
+  .consultorio-input input {
+    width: 100%;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card-acoes {
+    flex-direction: column;
+  }
+
+  .card-acoes button {
+    width: 100%;
   }
 
   h1 {
     font-size: 24px;
+  }
+
+  h2 {
+    font-size: 22px;
   }
 
   input,
@@ -218,5 +699,55 @@ button:hover {
   textarea,
   button {
     font-size: 15px;
+  }
+}
+
+/* =========================================
+   IMPRESSÃO / PDF
+========================================= */
+
+@media print {
+
+  body {
+    background: white;
+
+    color: #000;
+  }
+
+  .container,
+  .card {
+    background: white;
+
+    color: #000;
+
+    box-shadow: none;
+
+    border: 1px solid #ccc;
+  }
+
+  .btn-abrir-tv,
+  .btn-tv,
+  .btn-alta,
+  .btn-pdf,
+  button {
+    display: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #000;
+
+    text-shadow: none;
+  }
+
+  input,
+  select,
+  textarea {
+    color: #000;
+
+    background: white;
+
+    border: 1px solid #ccc;
   }
 }
